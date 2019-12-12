@@ -7,7 +7,7 @@ class BrickSpider(scrapy.Spider):
     def parse(self, response):
         SET_SELECTOR = '.set'
         for bset in response.css(SET_SELECTOR):
-            NAME_SELECTOR = '.set'
+            NAME_SELECTOR = 'h1 ::text'
             yield {
-                'name': brickset.css(NAME_SELECTOR).extract_first()
+                'name': bset.css(NAME_SELECTOR).extract_first()
             }
